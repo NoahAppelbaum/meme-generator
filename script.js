@@ -2,15 +2,18 @@
 
 const form = document.querySelector('#meme-form');
 const zone = document.querySelector('#meme-zone');
+let emptyMessage = document.querySelector('#empty-message');
 
-//counter for textcolor class assignment
-textNumber = 0;
 
 
 //make memes from form:
 
 form.addEventListener("submit", e => {
   e.preventDefault();
+
+  //clear empty message
+  emptyMessage.classList.add('gone');
+
 
   //get input values from form
 
@@ -27,24 +30,31 @@ form.addEventListener("submit", e => {
 
 
   let image = document.createElement('img');
+  //check image for error loading; then make the meme on success:
+  image.addEventListener("error", function () {
+    let errorMessage = document.createElement('p');
+    errorMessage.classList.add('zone-text');
+    errorMessage.innerText = "Image failed to load. Still hungry :(";
+
+    newMeme.appendChild(errorMessage);
+    zone.appendChild(newMeme);
+
+    form.reset();
+    return;
+
+  });
+
   image.src = imgURL;
-  // newMeme.style.width = image.naturalWidth;
 
   let topText = document.createElement('p');
   topText.innerText = topTextInput;
-  topText.classList.add("meme-text", "top-text", `text-num-${textNumber}`);
+  topText.classList.add("meme-text", "top-text");
+  topText.style.color = textColor;
 
   let botText = document.createElement('p');
   botText.innerText = botTextInput;
-  botText.classList.add("meme-text", "bot-text", `text-num-${textNumber}`);
-
-  //set text color
-  let texts = document.querySelectorAll(`.text-num-${textNumber}`);
-  for (let el of texts) {
-    el.style.color = textColor;
-  }
-
-  textNumber++;
+  botText.classList.add("meme-text", "bot-text");
+  botText.style.color = textColor;
 
   let closebox = document.createElement('i');
   closebox.innerHTML = '&#x2718;';
@@ -62,6 +72,10 @@ form.addEventListener("submit", e => {
 
   closebox.addEventListener('click', function () {
     this.parentNode.remove();
+    //and check for empty to restore message:
+    if (zone.children.length < 2) {
+      emptyMessage.classList.remove('gone');
+    }
   });
 
   newMeme.appendChild(image);

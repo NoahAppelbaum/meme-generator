@@ -9,15 +9,20 @@ input {
 }
 
 input[type=color] {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+}
+
+button {
+  margin-left: 70%;
 }
 
 fieldset {
   padding: 20px 60px;
   border-radius: 60px;
   background-color: aqua;
+  margin-bottom: 20px;
 }
 
 
@@ -28,17 +33,17 @@ legend {
 
 
 .meme {
-  width: 600px;
+  width: 800px;
   position: relative;
 
   margin: 60px, auto;
+  display: flex;
+  justify-content: center;
 
 }
 
 img {
-/* FIX THIS -- IMG TOO BIG */
- width: 100%;
- /* max-width: 600px; */
+  margin: 0 auto;
 
 }
 
@@ -48,7 +53,12 @@ img {
   left: 50%;
   transform: translateX(-50%);
   font: 40px arial, sans-serif;
+  text-align: center;
   color: white;
+
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+
   max-width: 100%;
 
 
@@ -69,11 +79,14 @@ img {
 
 }
 
+/* for on-load and error messages: */
+.zone-text {
+  font: 100px impact, sans-serif;
+  color: rgb(111, 218, 111);
+}
+
 .closebox {
   font: 80px red;
-  /* display: none; */
-
-  /* test */
   color: red;
   position: absolute;
   top: 0;
@@ -85,18 +98,18 @@ img {
   visibility: hidden;
 }
 
-/* .meme:hover > .closebox {
-  display: inline;
-  color: red;
-  position: absolute;
-  cursor: pointer;
-  /* top: 5px;
-  right: 5px; */
+.gone {
+  display: none;
+}
 
-} */
+.there {
+  display: block;
+}
 
 #meme-zone {
  width: 100%;
- display: block;
-
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
 }
