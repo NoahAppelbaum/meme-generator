@@ -33,23 +33,6 @@ form.addEventListener("submit", e => {
   newMeme.classList.add("meme");
 
   let image = document.createElement('img');
-
-  // I Can Haz Error Handling on image load?
-  // Can't try/catch if I don't know where in the process the error comes from
-  // Or can I catch errors that occur as events? More research...later
-  let imgError = false;
-  image.addEventListener('error', function () {
-    let errorMessage = document.createElement('p');
-    errorMessage.classList.add('zone-text', 'error-message');
-    errorMessage.innerText = "Image failed to load. Still hungry :(";
-
-    newMeme.appendChild(errorMessage);
-    zone.appendChild(newMeme);
-
-    form.reset();
-    imgError = true;
-  });
-
   image.src = imgURL;
 
 
@@ -76,7 +59,6 @@ form.addEventListener("submit", e => {
   });
 
   //delete memes
-
   closebox.addEventListener('click', function () {
     this.parentNode.remove();
     //and check for empty to restore message:
@@ -86,17 +68,31 @@ form.addEventListener("submit", e => {
   });
 
   newMeme.appendChild(image);
-  //how's that error coming?
-  if (imgError) {
-    return;
-  }
   newMeme.appendChild(topText);
   newMeme.appendChild(botText);
   newMeme.appendChild(closebox);
 
-
   zone.appendChild(newMeme);
 
   form.reset();
+
+  // I Can Haz Error Handling on image load?
+  // Can't try/catch if I don't know where in the process the error comes from
+  // Or can I catch errors that occur as events? More research...later
+  image.addEventListener('error', function () {
+    let errorMessage = document.createElement('p');
+    errorMessage.classList.add('zone-text', 'error-message');
+    errorMessage.innerText = "Image failed to load. Still hungry :(";
+
+    newMeme.appendChild(errorMessage);
+    zone.appendChild(newMeme);
+
+    //Error is apparently happening *after* the page renders?
+    //I can't stop these things from being added by returning the parent (meme-creation) fuction early
+    //soooo I have to remove them after the fact. Gotta be a better way!
+    topText.remove();
+    botText.remove();
+    image.remove();
+  });
 
 });
