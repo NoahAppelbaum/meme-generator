@@ -1,7 +1,7 @@
 
 
 .meme {
-  max-width: 1080px;
+  width: 600px;
   position: relative;
 
   margin: 60px, auto;
@@ -9,7 +9,7 @@
 }
 
 img {
-  margin: 0 auto;
+  width: 100%;
 
 }
 
@@ -18,9 +18,10 @@ img {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font: 24px arial, sans-serif;
-  /* color: white; */
+  font: 40px arial, sans-serif;
+  color: white;
   max-width: 100%;
+
 
 
 }
@@ -40,18 +41,26 @@ img {
 }
 
 .closebox {
-  font: 40px red;
-  padding: 0px 10px;
-  display: none;
+  font: 80px red;
+  /* display: none; */
+
+  /* test */
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  cursor: pointer;
 }
 
-.meme:hover > .closebox {
+/* .meme:hover > .closebox {
   display: inline;
   color: red;
   position: absolute;
+  cursor: pointer;
   /* top: 5px;
   right: 5px; */
-}
+
+} */
 
 #meme-zone {
  width: 100%;

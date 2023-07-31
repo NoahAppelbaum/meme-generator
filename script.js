@@ -11,16 +11,13 @@ textNumber = 0;
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  let label = document.getElementById('laaabel');
 
-
-  //get elements
+  //get input values from form
 
   let imgURL = document.querySelector('#url-input').value;
-
   let topTextInput = document.querySelector("#top-input").value;
-
   let botTextInput = document.querySelector("#bot-input").value;
+  let textColor = document.querySelector('#text-color-input').value;
 
 
   //make meme!
@@ -31,7 +28,7 @@ form.addEventListener("submit", e => {
 
   let image = document.createElement('img');
   image.src = imgURL;
-  newMeme.style.width = image.naturalWidth;
+  // newMeme.style.width = image.naturalWidth;
 
   let topText = document.createElement('p');
   topText.innerText = topTextInput;
@@ -42,9 +39,8 @@ form.addEventListener("submit", e => {
   botText.classList.add("meme-text", "bot-text", `text-num-${textNumber}`);
 
   //set text color
-  let textColor = document.querySelector('#text-color-input').value;
-  let text = document.getElementsByClassName(`text-num-${textNumber}`);
-  for (let el of text) {
+  let texts = document.querySelectorAll(`.text-num-${textNumber}`);
+  for (let el of texts) {
     el.style.color = textColor;
   }
 
@@ -68,5 +64,6 @@ form.addEventListener("submit", e => {
 
   zone.appendChild(newMeme);
 
+  form.reset();
 
 });
