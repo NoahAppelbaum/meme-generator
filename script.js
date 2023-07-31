@@ -20,7 +20,6 @@ form.addEventListener("submit", e => {
 
 
   //get input values from form
-
   let imgURL = document.querySelector('#url-input').value;
   let topTextInput = document.querySelector("#top-input").value;
   let botTextInput = document.querySelector("#bot-input").value;
@@ -28,7 +27,6 @@ form.addEventListener("submit", e => {
 
 
   //make meme!
-
   let newMeme = document.createElement('div');
   newMeme.classList.add("meme");
 
@@ -67,6 +65,7 @@ form.addEventListener("submit", e => {
     }
   });
 
+  //Put the meme together and put it on the page
   newMeme.appendChild(image);
   newMeme.appendChild(topText);
   newMeme.appendChild(botText);

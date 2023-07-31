@@ -35,6 +35,7 @@ fieldset {
 
 label {
   font: 30px impact, sans-serif;
+  margin-right: 30px;
 }
 
 
@@ -97,7 +98,7 @@ img {
 
 }
 
-/* for on-load and error messages: */
+/* for empty and error messages: */
 .zone-text {
   font: 100px impact, sans-serif;
   color: rgb(111, 218, 111);
