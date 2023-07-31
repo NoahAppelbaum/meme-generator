@@ -11,8 +11,12 @@ let emptyMessage = document.querySelector('#empty-message');
 form.addEventListener("submit", e => {
   e.preventDefault();
 
-  //clear empty message
+  //clear empty message, error message
   emptyMessage.classList.add('gone');
+  extantError = document.querySelector('.error-message');
+  if (extantError) {
+    extantError.parentNode.remove();
+  }
 
 
   //get input values from form
@@ -28,23 +32,26 @@ form.addEventListener("submit", e => {
   let newMeme = document.createElement('div');
   newMeme.classList.add("meme");
 
-
   let image = document.createElement('img');
-  //check image for error loading; then make the meme on success:
-  image.addEventListener("error", function () {
+
+  // I Can Haz Error Handling on image load?
+  // Can't try/catch if I don't know where in the process the error comes from
+  // Or can I catch errors that occur as events? More research...later
+  let imgError = false;
+  image.addEventListener('error', function () {
     let errorMessage = document.createElement('p');
-    errorMessage.classList.add('zone-text');
+    errorMessage.classList.add('zone-text', 'error-message');
     errorMessage.innerText = "Image failed to load. Still hungry :(";
 
     newMeme.appendChild(errorMessage);
     zone.appendChild(newMeme);
 
     form.reset();
-    return;
-
+    imgError = true;
   });
 
   image.src = imgURL;
+
 
   let topText = document.createElement('p');
   topText.innerText = topTextInput;
@@ -79,6 +86,10 @@ form.addEventListener("submit", e => {
   });
 
   newMeme.appendChild(image);
+  //how's that error coming?
+  if (imgError) {
+    return;
+  }
   newMeme.appendChild(topText);
   newMeme.appendChild(botText);
   newMeme.appendChild(closebox);

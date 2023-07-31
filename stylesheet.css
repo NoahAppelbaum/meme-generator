@@ -102,10 +102,6 @@ img {
   display: none;
 }
 
-.there {
-  display: block;
-}
-
 #meme-zone {
  width: 100%;
  display: flex;
