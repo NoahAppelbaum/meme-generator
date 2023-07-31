@@ -1,0 +1,60 @@
+
+
+.meme {
+  max-width: 1080px;
+  position: relative;
+
+  margin: 60px, auto;
+
+}
+
+img {
+  margin: 0 auto;
+
+}
+
+/* text deets: */
+.meme-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font: 24px arial, sans-serif;
+  /* color: white; */
+  max-width: 100%;
+
+
+}
+
+.top-text {
+
+  top: 5%;
+
+
+}
+
+.bot-text {
+
+  bottom: 5%;
+
+
+}
+
+.closebox {
+  font: 40px red;
+  padding: 0px 10px;
+  display: none;
+}
+
+.meme:hover > .closebox {
+  display: inline;
+  color: red;
+  position: absolute;
+  /* top: 5px;
+  right: 5px; */
+}
+
+#meme-zone {
+ width: 100%;
+ display: block;
+
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meme Generator</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+  <div class="header">
+    <h1>Meme Generator</h1>
+  </div>
+  <div id="form-div">
+    <form id="meme-form" action="">
+      <fieldset>
+        <div class="form-input">
+          <label id="laaabel" for="url-input">Image URL</label>
+          <input id="url-input" name="imgURL" type="url" required>
+        </div>
+        <div class="form-input">
+          <label for="top-input">Top Text</label>
+          <input id="top-input" name="topText" type="text">
+        </div>
+        <div class="form-input">
+          <label for="bot-input">Bottom Text</label>
+          <input id="bot-input" name="botText" type="text">
+        </div>
+        <input type="color" id="text-color-input" value="#FFFFFF">
+        <button id="submit-button" name="submitButton" type="submit">Meme!</button>
+      </fieldset>
+    </form>
+  </div>
+  <div id="meme-zone">
+
+    <!-- test meme -->
+    <!-- <div class="meme">
+      <img src="https://thumbs.dreamstime.com/b/guinea-pig-over-white-373322.jpg" alt="">
+      <p class="top-text meme-text">This is the top text</p>
+      <p class="bot-text meme-text">This is the really really long like so long bottom text even longer like will it
+        break</p>
+      <i class="closebox">&#x2718;</i>
+    </div> -->
+    <!-- end test meme -->
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
