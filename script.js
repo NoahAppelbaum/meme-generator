@@ -48,7 +48,15 @@ form.addEventListener("submit", e => {
 
   let closebox = document.createElement('i');
   closebox.innerHTML = '&#x2718;';
-  closebox.classList.add("closebox");
+  closebox.classList.add("closebox", "hidden");
+
+  //closebox hover visibility
+  newMeme.addEventListener('mouseover', function () {
+    closebox.classList.toggle('hidden');
+  });
+  newMeme.addEventListener('mouseout', function () {
+    closebox.classList.toggle('hidden');
+  });
 
   //delete memes
 
